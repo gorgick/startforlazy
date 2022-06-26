@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'base' %}">Главная</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'course' course.slug %}">
+                        {{ course }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ owner }}
+                </li>
+            </ol>
+        </nav>
+        <div class="col-md-12 pt-3" id="ownersCourses">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ owner.image_user.url }}" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h4>{{ owner.user.first_name }} {{ owner.user.last_name }}</h4>
+                    <hr>
+                    <p>Телефон: {{ owner.user.customer.phone }}</p>
+                    <p>Адресс: {{ owner.user.customer.address }}</p>
+                    <p>email: {{ owner.user.email }}</p>
+                    <div class="card-body text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+p.main_p{
+    font-style: italic;
+}
+#mainNavbar{
+    background-color: #dee2e6;
+}
+p.rating{
+    font-style: italic;
+    font-weight: 700;
+}
+#coursesCol{
+    border: 1px dotted #000;
+    padding: 10px 30px;
+    margin: 5px 40px;
+    box-shadow: 5px 5px 10px 5px #000;
+}
+#ownersCourses{
+    background-color: #dee2e6;
+}
+#ownersCourses img{
+    border: 1px solid #000;
+    box-shadow: 5px 5px 10px 5px #000;
+}
+#personalArea li{
+    padding: 5px 10px;
+
+}

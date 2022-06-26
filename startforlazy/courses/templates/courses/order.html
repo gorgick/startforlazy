@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'base' %}">Главная</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                   Заказ курса
+                </li>
+            </ol>
+        </nav>
+            <form action="{% url 'order' course.slug %}" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mt-3">Заказать курс</button>
+            </form>
+    </div>
+</div>
+{% endblock %}l>

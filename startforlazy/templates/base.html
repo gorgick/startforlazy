@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid" id="mainNavbar">
+        <a class="navbar-brand" href="{% url 'base' %}"><button class="btn btn-success">Главная</button></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <ul class="nav justify-content-end">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'personalarea' id=request.user.id %}"><button class="btn btn-success">Личный кабинет</button></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}"><button class="btn btn-success">Выйти</button></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}"><button class="btn btn-success">Войти</button></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}"><button class="btn btn-success">Зарегистрироваться</button></a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% if messages %}
+{% for message in messages %}
+<div class="container">
+
+        <div class="card">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+        </div>
+
+</div>
+{% endfor %}
+{% endif %}
+{% block content %}
+<div class="container-fluid mt-5 mb-5">
+    <div class="row">
+        <h3 align="center">Easy start for lazy people!</h3>
+        <p class="main_p" align="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias commodi consequatur
+            impedit ipsa
+            molestias odit possimus. Aliquam consequatur deleniti deserunt fuga laborum, rem totam veritatis vero
+            voluptas! Error in iste iure necessitatibus, nihil odit quidem reiciendis tempora ut vero? Commodi culpa
+            ducimus et hic laborum libero minima vitae. Deserunt dolorum harum mollitia natus perspiciatis quidem rem
+            repellat rerum soluta veniam? Beatae consectetur dignissimos dolorem eaque eum ex iusto quia quis ratione
+            ullam. Cupiditate id odit perspiciatis voluptate. Asperiores consequuntur dignissimos distinctio dolores ex
+            exercitationem facere, fuga in iusto minus nulla omnis optio quae quia reiciendis tempore voluptate,
+            voluptates?</p>
+    </div>
+</div>
+{% endblock %}
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+</html>
